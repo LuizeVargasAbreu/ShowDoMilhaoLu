@@ -9,12 +9,13 @@
                     primeira div -- área que ocupará o campo de formulário
                     segunda div -- campo de texto e label 
                 -->
-                  <div class="mdl-cell--12-col"> 
+<!--            NÃO PRECISA CADASTRAR O ID DA CATEGORIA, NÃO É NECESSÁRIO
+                <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtID" />
                         <label class="mdl-textfield__label" for="txtID">ID</label>
                     </div>
-                </div>
+                </div>-->
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

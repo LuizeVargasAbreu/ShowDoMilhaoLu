@@ -30,8 +30,7 @@
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text ">
             <%=msg%><br />
-            <a href="list.jsp"><i class="material-icons">Voltar para Categoria</i></a>
-            
+            <a href="list.jsp"><i class="material-icons">Voltar</i></a>
         </div>
 
     </div>

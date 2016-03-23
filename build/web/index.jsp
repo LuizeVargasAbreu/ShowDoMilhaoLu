@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1><a href="admin/">Administração</a><br/>
+        <h1><a href="admin/login.jsp">Administração</a><br/>
        </h1>
     </body>
 </html>

@@ -4,7 +4,7 @@
 <%
     String msg="";
     
-    if(request.getParameter("txtNome") == null || request.getParameter("txtID")== null)
+    if(request.getParameter("txtNome") == null)// || request.getParameter("txtID")== null)
     {
         response.sendRedirect("list.jsp");
     }
@@ -12,13 +12,13 @@
     {
              
         String nome = request.getParameter("txtNome");
-        Integer id = Integer.parseInt(request.getParameter("txtID"));
+     //   Integer id = Integer.parseInt(request.getParameter("txtID"));
         
         CategoriaDAO dao = new CategoriaDAO();
         Categoria cat = new Categoria();
 
         cat.setNome(nome);
-        cat.setId(id);
+     //   cat.setId(id);
         
        try
         {
@@ -33,7 +33,7 @@
         
     }
     String nome = request.getParameter("txtNome");
-    String id = request.getParameter("txtID");
+   // String id = request.getParameter("txtID");
 
 %>
 
@@ -42,7 +42,7 @@
         <div class="mdl-card__supporting-text ">
              <%=msg%>.<br />
              Nome: <%=nome%><br />
-             ID da Categoria: <%=id%><br />
+<!--             ID da Categoria: <%//=id%><br />-->
             <a href="list.jsp"><i class="material-icons">list</i></a>
             
         </div>
