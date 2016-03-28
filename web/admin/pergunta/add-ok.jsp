@@ -1,3 +1,4 @@
+<%@page import="modelo.Categoria"%>
 <%@include file="../cabecalho.jsp"%>
 <%@page import="dao.PerguntaDAO"%>
 <%@page import="modelo.Pergunta"%>
@@ -19,10 +20,14 @@
         Integer nivel = Integer.parseInt(request.getParameter("txtNivel"));
         String certa = request.getParameter("txtCerta");
         String enunciado = request.getParameter("txtEnunciado");
+        Integer id = Integer.parseInt(request.getParameter("selCategoria")); 
         
         PerguntaDAO dao = new PerguntaDAO();
         Pergunta pg = new Pergunta();
-
+        
+        Categoria cat = new Categoria();
+        cat.setId(id);
+        
         pg.setId(idzinho);
         pg.setA(a);
         pg.setB(b);
@@ -31,7 +36,7 @@
         pg.setNivel(nivel);
         pg.setCerta(certa);
         pg.setEnunciado(enunciado);
-        
+        pg.setCategoria(cat);
        try
         {
             dao.incluir(pg);

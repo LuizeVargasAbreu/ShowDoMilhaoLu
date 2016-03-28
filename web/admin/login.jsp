@@ -18,6 +18,11 @@
         {
            msg = "Errou";
         }
+    
+    }
+    if(request.getParameter("sair") != null)
+    {
+        session.setAttribute("usuarioAdmin", null);
     }
 %>
     

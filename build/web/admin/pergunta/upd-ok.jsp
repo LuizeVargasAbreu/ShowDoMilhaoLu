@@ -1,3 +1,4 @@
+<%@page import="modelo.Categoria"%>
 <%@include file="../cabecalho.jsp"%>
 <%@page import="modelo.Pergunta"%>
 <%@page import="dao.PerguntaDAO"%>
@@ -17,10 +18,15 @@
     Integer nivel = Integer.parseInt(request.getParameter("txtNivel"));
     String certa = request.getParameter("txtCerta");
     String enunciado = request.getParameter("txtEnunciado");
+    Integer id = Integer.parseInt(request.getParameter("selCategoria"));
 
     PerguntaDAO dao = new PerguntaDAO();
     Pergunta pg = dao.buscarPorChavePrimaria(idzinho);
-
+    
+    Categoria cat = new Categoria ();
+    cat.setId(id);
+        
+    
     if (pg == null)
     {
         response.sendRedirect("list.jsp");

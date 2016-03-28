@@ -1,4 +1,7 @@
 <%@include file="../cabecalho.jsp"%>
+<%@page import="java.util.List"%>
+<%@page import="modelo.Categoria"%>
+<%@page import="dao.CategoriaDAO"%>
 <%@page import="dao.PerguntaDAO"%>
 <%@page import="modelo.Pergunta"%>
 <%
@@ -18,6 +21,10 @@
         return;
 
     }
+    
+    CategoriaDAO cdao = new CategoriaDAO();
+    List<Categoria> lista = cdao.listar();
+        
 
 %>
 
@@ -83,6 +90,28 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtEnunciado" />
                         <label class="mdl-textfield__label" for="txtEnunciado">Enunciado</label>
+                    </div>
+                </div>
+                
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selCategoria" name="selCategoria" value="<%=obj.getCategoria()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                            //percorrer minha lista de cursos
+                               String selected = "";    
+                               for (Categoria item : lista) {
+                               if(item.getNome()== pg.getCategoria().getNome())
+                               {
+                               selected = "selected";
+                               }
+                            %>
+                        <option value="<%=item.getNome()%>" <%=selected%>><%=item%></option>
+                            <%
+                            selected = "";
+                             }
+                            %>
+                        </select>
+                        <label class="mdl-select__label" for="selCategoria">Exemplo Select</label>
                     </div>
                 </div>
                         

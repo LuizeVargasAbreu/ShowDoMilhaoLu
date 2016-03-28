@@ -45,13 +45,15 @@
                     <tr>
 
                         <th>ID</th>
-                        <th>A</th>
+                   <!-- <th>A</th>
                         <th>B</th>
                         <th>C</th>
-                        <th>D</th>
-                        <th>Nível</th>
+                        <th>D</th> -->
+                        <th>Nível</th>    
+                        <th>Enunciado</th>   
                         <th>Certa</th>
-                        <th>Enunciado</th>
+                        <th>Categoria</th>                        
+                        
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -61,13 +63,14 @@
                 <tbody>
                     <tr>
                         <td><%=item.getId()%></td>
-                        <td><%=item.getA()%></td>
-                        <td><%=item.getB()%></td>
-                        <td><%=item.getC()%></td>
-                        <td><%=item.getD()%></td>
+              <!--      <td><%//=item.getA()%></td>
+                        <td><%//=item.getB()%></td>
+                        <td><%//=item.getC()%></td>
+                        <td><%//=item.getD()%></td>     -->
                         <td><%=item.getNivel()%></td>
-                        <td><%=item.getCerta()%></td>
                         <td><%=item.getEnunciado()%></td>
+                        <td><%=item.getCerta()%></td>
+                        <td><%=item.getCategoria()%></td>
                         <td>
                             <!-- 
                                 Atualizar 
