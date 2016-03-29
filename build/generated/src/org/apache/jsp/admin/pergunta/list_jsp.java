@@ -70,7 +70,10 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta name=\"description\" content=\"A front-end template that helps you build fast, modern mobile web apps.\">\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
       out.write("        <title>Gerenciamento de Sistemas</title>\n");
-      out.write("\n");
+      out.write("        \n");
+      out.write("    <div>\n");
+      out.write("        <p>Admin - <a href=\"../login.jsp?sair=ok\">Sair</a></p>\n");
+      out.write("    </div>      \n");
       out.write("        <!-- Add to homescreen for Chrome on Android -->\n");
       out.write("        <meta name=\"mobile-web-app-capable\" content=\"yes\">\n");
       out.write("        <link rel=\"icon\" sizes=\"192x192\" href=\"../images/touch/chrome-touch-icon-192x192.png\">\n");
@@ -186,18 +189,10 @@ public final class list_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <td>");
       out.print(item.getId());
       out.write("</td>\n");
-      out.write("              <!--      <td>");
-//=item.getA()
-      out.write("</td>\n");
-      out.write("                        <td>");
-//=item.getB()
-      out.write("</td>\n");
-      out.write("                        <td>");
-//=item.getC()
-      out.write("</td>\n");
-      out.write("                        <td>");
-//=item.getD()
-      out.write("</td>     -->\n");
+      out.write("              <!--      <td><//%=item.getA()%></td>\n");
+      out.write("                        <td><//%=item.getB()%></td>\n");
+      out.write("                        <td><//%=item.getC()%></td>\n");
+      out.write("                        <td><//%=item.getD()%></td>     -->\n");
       out.write("                        <td>");
       out.print(item.getNivel());
       out.write("</td>\n");

@@ -1,9 +1,28 @@
-<%-- 
-    Document   : index.jsp
-    Created on : 20/02/2016, 08:09:09
-    Author     : marcelosiedler
---%>
-
+<%@page import="modelo.Jogador"%>
+<%@page import="dao.JogadorDAO"%>
+<%
+  //Tentativa de Login
+  String mensagem = "";
+  if(request.getParameter("txtEntrarLogin") != null &&
+          request.getParameter("txtEntrarSenha") != null)
+  {
+      JogadorDAO dao = new JogadorDAO();
+      Jogador jogador;
+      String login = request.getParameter("txtEntrarLogin");
+      String senha = request.getParameter("txtEntrarSenha"); 
+      
+      jogador = dao.realizarLogin(login, senha);
+      if(jogador !=null)
+      {
+          mensagem = "Login OK";
+      }
+      else
+      {
+          mensagem = "Login errado";
+      }
+      out.print(mensagem);
+  }
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
