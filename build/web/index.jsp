@@ -14,7 +14,8 @@
       jogador = dao.realizarLogin(login, senha);
       if(jogador !=null)
       {
-          mensagem = "Login OK";
+        session.setAttribute("jogador", jogador);
+        response.sendRedirect("jogo.jsp");
       }
       else
       {
