@@ -3,6 +3,8 @@ package org.apache.jsp.site;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import modelo.Jogador;
+import dao.JogadorDAO;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +46,36 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+
+    //Tentativa de login
+    String mensagem = "";
+    if(request.getParameter("txtEntrarLogin")!=null &&
+            request.getParameter("txtEntrarSenha")!=null)
+    {
+        JogadorDAO dao = new JogadorDAO();
+        Jogador jogador; //variável com o usuário logado
+        String login = request.getParameter("txtEntrarLogin");
+        String senha = request.getParameter("txtEntrarSenha");
+        
+        jogador = dao.realizarLogin(login, senha);
+        if(jogador !=null)
+        {
+            //criar uma Sessão para o jogador
+            //vou pra tela inicial do jogo
+            session.setAttribute("jogador", jogador);
+            //vou para tela de jogo
+            response.sendRedirect("jogo.jsp");
+        }
+        else
+        {
+            mensagem = "Login errado";
+        }
+       
+    }
+    
+
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -64,7 +96,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <label>Senha</label>\n");
       out.write("                <input type=\"text\" name=\"txtEntrarSenha\"\n");
       out.write("                       /><br/>\n");
-      out.write("                <a href=\"jogo.jsp\"><input type=\"submit\" value=\"Entrar\" /></a>\n");
+      out.write("                <input type=\"submit\" value=\"Entrar\" />\n");
       out.write("                <a href=\"jogo.jsp\">Pular login</a>\n");
       out.write("            </form>\n");
       out.write("            <div class=\"centralizar\">\n");
