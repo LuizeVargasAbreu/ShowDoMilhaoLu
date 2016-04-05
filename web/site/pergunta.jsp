@@ -3,7 +3,29 @@
     Created on : 21/03/2016, 15:37:13
     Author     : marcelosiedler
 --%>
-
+<%@page import="java.util.List"%>
+<%@page import="dao.PerguntaDAO"%>
+<%@page import="modelo.Pergunta"%>
+<%@page import="modelo.Jogo"%>
+<%
+/*    QUANDO O JOGO COMEÇA
+- Inicializar o meu jogo
+- Buscar a lista de perguntas
+- Guardar o meu jogo na session
+- Exibir a primeira pergunta na tela
+*/
+    Jogo jogo = new Jogo();
+    PerguntaDAO dao = new PerguntaDAO();
+    
+    List<Pergunta> lista;
+    lista = dao.listar();
+    
+    jogo.setPerguntas(lista);
+    session.setAttribute("jogo", jogo);
+      
+    Pergunta pergunta = jogo.getPerguntas().get(0);
+       
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,9 +56,9 @@
         </div>
         <div class="painelUsuario">
             Siedler<br />
-            500 errar<br/>
+            <%=jogo.getErro()%>errar<br/>
             1000 parar<br/>
-            2000 acertar<br/>
+            <%=jogo.getAcerto()%> acertar<br/>
             
             
         </div>

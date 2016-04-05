@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="usuario">
-        <%=jogador.getLogin()%>
+            <%=jogador.getLogin()%>
         </div>
         <div class="centralizar">
             <img src="img/show.png" alt=""/>
