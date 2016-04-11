@@ -36,17 +36,17 @@
     </head>
     <body>
         <div class="pergunta">
-            <h4 class="enunciado">Quem foi o primeiro apresentador do SBT?</h4>
+            <h4 class="enunciado"><%=pergunta.getEnunciado()%></h4>
             <div class="opcoes">
                 <form action="fim.jsp" method="post">
                     <input type="radio" value="A" name="rdoPergunta" />
-                    Silvio Santos<br/>
+                    <%=pergunta.getA()%><br/>
                     <input type="radio" value="B" name="rdoPergunta" />
-                    Carlos Alberto de Nogrega<br/>
+                    <%=pergunta.getB()%><br/>
                     <input type="radio" value="C" name="rdoPergunta" />
-                    Gugu<br/>
+                    <%=pergunta.getC()%><br/>
                     <input type="radio" value="D" name="rdoPergunta" />
-                    Roberto Bolaños<br/>
+                    <%=pergunta.getD()%><br/>
                     <hr/>
                     <input type="submit" value="confirmar" />
                      <input type="submit" value="pular" />(3)

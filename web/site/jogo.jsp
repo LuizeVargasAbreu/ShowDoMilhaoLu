@@ -5,7 +5,7 @@
 --%>
 <%@page import="modelo.Jogador"%>
 <%
-    //atribui o valor da sessaõ jogador ao objeto da página
+    //atribui o valor da sessão jogador ao objeto da página
     Jogador jogador = (Jogador)session.getAttribute("jogador");
     
 %>
@@ -19,7 +19,7 @@
     </head>
     <body>
         <div class="usuario">
-            <%=jogador.getLogin()%>
+        
         </div>
         <div class="centralizar">
             <img src="img/show.png" alt=""/>

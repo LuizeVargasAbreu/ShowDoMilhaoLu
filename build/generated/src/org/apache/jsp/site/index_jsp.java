@@ -73,6 +73,66 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
        
     }
     
+        
+    if(request.getParameter("txtCadastrarLogin") == null || request.getParameter("txtCadastrarSenha")== null || request.getParameter("txtCadastrarEmail")== null)
+    {
+    if(request.getParameter("txtCadastrarLogin")!=null &&
+            request.getParameter("txtCadastrarSenha")!=null &&
+            request.getParameter("txtCadastrarEmail") != null)
+    {
+        JogadorDAO dao = new JogadorDAO();
+        Jogador jogador; //variável com o usuário cadastrado
+        String login = request.getParameter("txtCadastrarLogin");
+        String senha = request.getParameter("txtCadastrarSenha");
+        String email = request.getParameter("txtCadastrarEmail");
+        
+        jogador = dao.realizarLogin(login, senha);
+        if(jogador !=null)
+        {
+            //criar uma Sessão para o jogador
+            //vou pra tela inicial do jogo
+            session.setAttribute("jogador", jogador);
+            //vou para tela de jogo
+            response.sendRedirect("jogo.jsp");
+        }
+        else
+        {
+            mensagem = "Cadastrado não efetuado.";
+        }
+       
+    }
+    }
+    else
+    {
+       // VER SE ESTA CERTO E CADASTRAR CORRETAMENTE    
+        String login = request.getParameter("txtCadastrarLogin");
+        String senha = request.getParameter("txtCadastrarSenha");
+        String email = request.getParameter("txtCadastrarEmail");
+                
+        JogadorDAO dao = new JogadorDAO();
+        Jogador jogador = new Jogador();
+
+        jogador.setLogin(login);
+        jogador.setSenha(senha);
+        jogador.setEmail(email);
+                
+       try
+        {
+            dao.incluir(jogador);
+            mensagem = "Jogador cadastrado com sucesso";
+            
+        }
+        catch(Exception ex)
+        {
+            mensagem = "Erro ao cadastrar jogador";
+        }
+        
+    }
+    
+         
+    String login = request.getParameter("txtCadastrarLogin");
+    String senha = request.getParameter("txtCadastrarSenha");
+    String email = request.getParameter("txtCadastrarEmail");
 
       out.write("\n");
       out.write("\n");
