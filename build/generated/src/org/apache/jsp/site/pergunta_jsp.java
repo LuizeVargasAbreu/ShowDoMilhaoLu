@@ -88,8 +88,8 @@ public final class pergunta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(pergunta.getEnunciado());
       out.write("</h4>\n");
       out.write("            <div class=\"opcoes\">\n");
-      out.write("                <form action=\"fim.jsp\" method=\"post\">\n");
-      out.write("                    <input type=\"radio\" value=\"A\" name=\"rdoPergunta\" />\n");
+      out.write("                <form action=\"pergunta.jsp\" method=\"post\">    <!-- action=\"fim.jsp\" ... -->\n");
+      out.write("                     <input type=\"radio\" value=\"A\" name=\"rdoPergunta\" />\n");
       out.write("                    ");
       out.print(pergunta.getA());
       out.write("<br/>\n");
@@ -107,7 +107,9 @@ public final class pergunta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<br/>\n");
       out.write("                    <hr/>\n");
       out.write("                    <input type=\"submit\" value=\"confirmar\" />\n");
-      out.write("                     <input type=\"submit\" value=\"pular\" />(3)\n");
+      out.write("                    <input type=\"submit\" value=\"pular\" />(");
+      out.print(jogo.getPulos());
+      out.write(")\n");
       out.write("                      <input type=\"submit\" value=\"parar\" />\n");
       out.write("                </form>\n");
       out.write("            </div>\n");

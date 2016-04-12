@@ -59,8 +59,8 @@
         </div>
         <div class="painelUsuario">
             Jogador: <%=jogador.getLogin()%><br />
-            <%=jogo.getErro()%>errar<br/>
-            1000 parar<br/>
+            <%=jogo.getErro()%> errar<br/>
+            <%=jogo.getPontuação()%> parar<br/>
             <%=jogo.getAcerto()%> acertar<br/>
             
             
