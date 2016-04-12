@@ -44,8 +44,8 @@
                 <thead>
                     <tr>
 
-                        <th>ID</th>
-                   <!-- <th>A</th>
+                    <!--<th>ID</th>
+                        <th>A</th>
                         <th>B</th>
                         <th>C</th>
                         <th>D</th> -->
@@ -62,8 +62,8 @@
                 %>
                 <tbody>
                     <tr>
-                        <td><%=item.getId()%></td>
-              <!--      <td><//%=item.getA()%></td>
+            <!--        <td><//%=item.getId()%></td>
+                        <td><//%=item.getA()%></td>
                         <td><//%=item.getB()%></td>
                         <td><//%=item.getC()%></td>
                         <td><//%=item.getD()%></td>     -->

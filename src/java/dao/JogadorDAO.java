@@ -47,7 +47,7 @@ public class JogadorDAO {
         }
         return jogador;
     }
-   
+
     public List<Jogador> listar() throws Exception {
         return em.createNamedQuery("Jogador.findAll").getResultList();
        

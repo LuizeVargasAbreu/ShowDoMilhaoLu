@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import modelo.Jogador;
 import dao.JogadorDAO;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class cadastrar_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -47,31 +47,38 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
 
-    //Tentativa de login
     String mensagem = "";
-    if(request.getParameter("txtEntrarLogin")!=null &&
-            request.getParameter("txtEntrarSenha")!=null)
+    if(request.getParameter("txtCadastrarLogin") != null ||
+            request.getParameter("txtCadastrarSenha")!= null ||
+               request.getParameter("txtCadastrarEmail")!= null)
     {
-        JogadorDAO dao = new JogadorDAO();
-        Jogador jogador; //variável com o usuário logado
-        String login = request.getParameter("txtEntrarLogin");
-        String senha = request.getParameter("txtEntrarSenha");
-        
-        jogador = dao.realizarLogin(login, senha);
-        if(jogador !=null)
-        {
-            //criar uma Sessão para o jogador
-            //vou pra tela inicial do jogo
-            session.setAttribute("jogador", jogador);
-            //vou para tela de jogo
-            response.sendRedirect("jogo.jsp");
-        }
-        else
-        {
-            mensagem = "Login errado";
-        }
-       
+         response.sendRedirect("index.jsp");
     }
+    else {    
+        String login = request.getParameter("txtCadastrarLogin");
+        String senha = request.getParameter("txtCadastrarSenha");
+        String email = request.getParameter("txtCadastrarEmail");
+                
+        JogadorDAO dao = new JogadorDAO();
+        Jogador jogador = new Jogador();
+
+        jogador.setLogin(login);
+        jogador.setSenha(senha);
+        jogador.setEmail(email);
+                
+       try
+        {
+            dao.incluir(jogador);
+            mensagem = "Jogador cadastrado com sucesso";
+            
+        }
+        catch(Exception ex)
+        {
+            mensagem = "Erro ao cadastrar jogador";
+        }
+        
+    }
+        
 
       out.write("\n");
       out.write("\n");
@@ -87,25 +94,22 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <img src=\"img/show.png\" alt=\"\"/>\n");
       out.write("        </div>\n");
       out.write("        <div class=\"inicialformulario\">\n");
-      out.write("            <h4>Entrar</h4>\n");
+      out.write("            <h4>Cadastre-se</h4>\n");
+      out.write("            \n");
       out.write("            <form action=\"index.jsp\" method=\"post\">\n");
       out.write("                <label>Login:</label>\n");
-      out.write("                <input type=\"text\" name=\"txtEntrarLogin\"\n");
+      out.write("                <input type=\"text\" name=\"txtCadastrarLogin\"\n");
       out.write("                       /><br/>\n");
       out.write("                <label>Senha</label>\n");
-      out.write("                <input type=\"text\" name=\"txtEntrarSenha\"\n");
+      out.write("                <input type=\"text\" name=\"txtCadastrarSenha\"\n");
       out.write("                       /><br/>\n");
-      out.write("                <input type=\"submit\" value=\"Entrar\" />\n");
-      out.write("                <a href=\"jogo.jsp\">Pular login</a>\n");
+      out.write("                <label>Email</label>\n");
+      out.write("                <input type=\"text\" name=\"txtCadastrarEmail\"\n");
+      out.write("                       /><br/>\n");
+      out.write("                <input type=\"submit\" value=\"Cadastrar\" />\n");
+      out.write("                \n");
       out.write("            </form>\n");
-      out.write("            <div class=\"centralizar\">\n");
-      out.write("                <hr/>\n");
-      out.write("                ou\n");
-      out.write("                <hr/>\n");
-      out.write("            </div>\n");
-      out.write("            <a href=\"cadastrar.jsp\"><h4>Cadastre-se</h4></a>\n");
-      out.write("            \n");
-      out.write("            </div>\n");
+      out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -12,7 +12,7 @@
     }
     else
     {
-        Integer idzinho = Integer.parseInt(request.getParameter("txtIdzinho"));     
+       // Integer idzinho = Integer.parseInt(request.getParameter("txtIdzinho"));     
         String a = request.getParameter("txtA");
         String b = request.getParameter("txtB");
         String c = request.getParameter("txtC");
@@ -28,7 +28,7 @@
         Categoria cat = new Categoria();
         cat.setId(id);
         
-        pg.setId(idzinho);
+      //  pg.setId(idzinho);
         pg.setA(a);
         pg.setB(b);
         pg.setC(c);
