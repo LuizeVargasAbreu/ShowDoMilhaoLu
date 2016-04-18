@@ -17,22 +17,18 @@
 - Exibir a primeira pergunta na tela
 */
 //Verificar se diferencia o botão que eu cliquei
-
-
-//Trecho executado QUANDO eu acesso
-//o jogo pela primeira vez - PERGUNTA 01
-    if(request.getParameter("btnConfirmar") != null)
-    {
-        out.print("Foi o confirmar.");
-    }
-       
-    Jogo jogo = new Jogo();
-    PerguntaDAO dao = new PerguntaDAO();
-    List<Pergunta> lista;
-    lista = dao.listar();
-    jogo.setPerguntas(lista);
-//Até aqui - primeira vez
-
+   Jogo jogo = new Jogo();
+       if (request.getParameter("btnConfirmar") != null) {
+               out.print("Foi o confirmar");
+           } else {
+               if (request.getParameter("btnPular") != null) {
+               out.print("Foi o pular.");
+           } else if (request.getParameter("btnParar") != null) {
+               out.print("Foi o parar.");
+           } else {
+               jogo.iniciar();
+           }
+       }
     session.setAttribute("jogo", jogo);
     Pergunta pergunta = jogo.getPerguntas().get(0);
     
@@ -67,7 +63,7 @@
             </div>
         </div>
         <div class="painelUsuario">
-            Jogador: <%=jogador.getLogin()%><br />
+            <%=jogador.getLogin()%><br />
             <%=jogo.getErro()%> errar<br/>
             <%=jogo.getPontuacao()%> parar<br/>
             <%=jogo.getAcerto()%> acertar<br/>

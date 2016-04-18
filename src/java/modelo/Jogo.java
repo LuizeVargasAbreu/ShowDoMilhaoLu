@@ -1,6 +1,9 @@
 package modelo;
 
+import dao.PerguntaDAO;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Jogo {
         private List<Pergunta> perguntas;
@@ -51,6 +54,46 @@ public class Jogo {
     {
         Integer erro = 0;
         return erro;
+    }
+    
+    public void iniciar()
+    {
+            try {
+                //Carrega as perguntas
+                PerguntaDAO dao = new PerguntaDAO();
+                this.setPerguntas(dao.listar());
+            } catch (Exception ex) {
+                Logger.getLogger(Jogo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }
+    
+    public boolean confirmar(String opcaomarcada)
+    {
+        if(opcaomarcada.equals(this.getPerguntas().get(0).getCerta()))
+        {
+            //Excluo a pergunta atual
+            this.getPerguntas().remove(0);
+            this.setPontuacao(this.getAcerto());
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public boolean pular()
+    {
+        if(this.pulos!=0)
+        {
+            this.pulos--;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
         
 }
