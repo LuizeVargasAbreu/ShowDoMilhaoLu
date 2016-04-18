@@ -120,8 +120,10 @@ public final class pergunta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<br />\n");
       out.write("            ");
       out.print(jogo.getErro());
-      out.write("errar<br/>\n");
-      out.write("            1000 parar<br/>\n");
+      out.write(" errar<br/>\n");
+      out.write("            ");
+      out.print(jogo.getPontuacao());
+      out.write(" parar<br/>\n");
       out.write("            ");
       out.print(jogo.getAcerto());
       out.write(" acertar<br/>\n");

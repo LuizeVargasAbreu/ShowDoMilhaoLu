@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Jogo {
         private List<Pergunta> perguntas;
-        private Integer pontuação;
+        private Integer pontuacao;
         private Integer pulos;
         
         public Jogo()
         {
             this.pulos = 3;
-            this.pontuação = 0;
+            this.pontuacao = 0;
         }
 
     public List<Pergunta> getPerguntas() {
@@ -21,12 +21,12 @@ public class Jogo {
         this.perguntas = perguntas;
     }
 
-    public Integer getPontuação() {
-        return pontuação;
+    public Integer getPontuacao() {
+        return pontuacao;
     }
 
-    public void setPontuação(Integer pontuação) {
-        this.pontuação = pontuação;
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
     }
 
     public Integer getPulos() {
@@ -40,7 +40,7 @@ public class Jogo {
     public Integer getAcerto()
     {
         Integer acerto = 0;
-        if(this.pontuação == 0)
+        if(this.pontuacao == 0)
         {
             acerto = 1000;
         }
