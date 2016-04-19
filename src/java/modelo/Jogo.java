@@ -88,6 +88,7 @@ public class Jogo {
         if(this.pulos!=0)
         {
             this.pulos--;
+            this.getPerguntas().remove(0);
             return true;
         }
         else

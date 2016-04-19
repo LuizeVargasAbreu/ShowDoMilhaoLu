@@ -16,23 +16,40 @@
 - Guardar o meu jogo na session
 - Exibir a primeira pergunta na tela
 */
-//Verificar se diferencia o botão que eu cliquei
-   Jogo jogo = new Jogo();
+//Verificar se clicou em confirmar
+   Jogo jogo;
+   //verficar se já tem jogo sendo jogado
+    if(session.getAttribute("jogo")!=null)
+    {
+        jogo = (Jogo)session.getAttribute("jogo");
+    }
+    else
+    {
+        jogo = new Jogo();
+    }
        if (request.getParameter("btnConfirmar") != null) {
-               out.print("Foi o confirmar");
-           } else {
-               if (request.getParameter("btnPular") != null) {
-               out.print("Foi o pular.");
-           } else if (request.getParameter("btnParar") != null) {
-               out.print("Foi o parar.");
-           } else {
+               String opcaomarcada = request.getParameter("rdoPergunta");
+               //verificar se acertou ou errou
+               if(!jogo.confirmar(opcaomarcada))
+               {
+                   response.sendRedirect("fim.jsp");
+               }
+       } else {
+            if (request.getParameter("btnPular") != null) {
+               jogo.pular();
+       } else {
+            if (request.getParameter("btnParar") != null) {
+               response.sendRedirect("fim.jsp");
+       } else {
+               //Iniciar o jogo
                jogo.iniciar();
            }
+       }
        }
     session.setAttribute("jogo", jogo);
     Pergunta pergunta = jogo.getPerguntas().get(0);
     
-   Jogador jogador = (Jogador)session.getAttribute("jogador");   
+    Jogador jogador = (Jogador)session.getAttribute("jogador");   
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
