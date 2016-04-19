@@ -75,7 +75,7 @@
                     <hr/>
                     <input type="submit" value="confirmar" name="btnConfirmar" />
                     <input type="submit" value="pular" name="btnPular" />(<%=jogo.getPulos()%>)
-                      <input type="submit" value="parar" />
+                      <input type="submit" value="parar" name="btnParar"/>
                 </form>
             </div>
         </div>
