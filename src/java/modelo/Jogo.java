@@ -56,11 +56,13 @@ public class Jogo {
         if(pontuacao == 0 || pontuacao == 1000000){
             return erro;
         }
-        else if(pontuacao != 0){
+        else if(pontuacao != 0)
+        {
             erro = pontuacao / 2;
+            
+    }
         return erro;
     }
-    
     public void iniciar()
     {
             try {
