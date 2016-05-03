@@ -1,10 +1,12 @@
-package org.apache.jsp.site;
+package org.apache.jsp;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.math.BigDecimal;
 import modelo.Jogador;
 import dao.JogadorDAO;
+import dao.RankingDAO;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,34 +48,34 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
 
-    //Tentativa de login
-    String mensagem = "";
-    if(request.getParameter("txtEntrarLogin")!=null &&
-            request.getParameter("txtEntrarSenha")!=null)
-    {
-        JogadorDAO dao = new JogadorDAO();
-        Jogador jogador; //variável com o usuário logado
-        String login = request.getParameter("txtEntrarLogin");
-        String senha = request.getParameter("txtEntrarSenha");
-        
-        jogador = dao.realizarLogin(login, senha);
-        dao.fechaEmf();
-        
-        if(jogador !=null)
-        {
-            //criar uma Sessão para o jogador
-            //vou pra tela inicial do jogo
-            session.setAttribute("jogador", jogador);
-            //vou para tela de jogo
-            response.sendRedirect("jogo.jsp");
-        }
-        else
-        {
-            mensagem = "Login errado";
-        }
-       
-    }
+  //Tentativa de Login
+  String mensagem = "";
+  if(request.getParameter("txtEntrarLogin") != null &&
+          request.getParameter("txtEntrarSenha") != null)
+  {
+      JogadorDAO dao = new JogadorDAO();
+      Jogador jogador;
+      String login = request.getParameter("txtEntrarLogin");
+      String senha = request.getParameter("txtEntrarSenha"); 
+      
+      jogador = dao.realizarLogin(login, senha);
+      if(jogador !=null)
+      {
+        session.setAttribute("jogador", jogador);
+        response.sendRedirect("jogo.jsp");
+      }
+      else
+      {
+          mensagem = "Login errado";
+      }
+      out.print(mensagem);
+  }
+  
+  //Decimal para String
+  BigDecimal bd = new BigDecimal("320.02");
+
 
       out.write("\n");
       out.write("\n");
@@ -81,33 +83,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Show do Milhão</title>\n");
-      out.write("        <link rel=\"stylesheet\" href=\"css/estilo.css\"/>\n");
+      out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"centralizar\">\n");
-      out.write("            <img src=\"img/show.png\" alt=\"\"/>\n");
-      out.write("        </div>\n");
-      out.write("        <div class=\"inicialformulario\">\n");
-      out.write("            <h4>Entrar</h4>\n");
-      out.write("            <form action=\"index.jsp\" method=\"post\">\n");
-      out.write("                <label>Login:</label>\n");
-      out.write("                <input type=\"text\" name=\"txtEntrarLogin\"\n");
-      out.write("                       /><br/>\n");
-      out.write("                <label>Senha</label>\n");
-      out.write("                <input type=\"text\" name=\"txtEntrarSenha\"\n");
-      out.write("                       /><br/>\n");
-      out.write("                <input type=\"submit\" value=\"Entrar\" />\n");
-      out.write("                <a href=\"jogo.jsp?jogador=anonimo\">Pular login</a>\n");
-      out.write("            </form>\n");
-      out.write("            <div class=\"centralizar\">\n");
-      out.write("                <hr/>\n");
-      out.write("                ou\n");
-      out.write("                <hr/>\n");
-      out.write("            </div>\n");
-      out.write("            <a href=\"cadastrar.jsp\"><h4>Cadastre-se</h4></a>\n");
-      out.write("            \n");
-      out.write("            </div>\n");
+      out.write("        <h1><a href=\"admin/login.jsp\">Administração</a><br/>\n");
+      out.write("       </h1>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

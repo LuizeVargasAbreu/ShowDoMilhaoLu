@@ -25,7 +25,7 @@ public class RankingDAO {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            em.close();
+           // em.close();
             
         }
         
@@ -43,6 +43,10 @@ public class RankingDAO {
          query.setParameter("nome", '%' + nome + '%');
          return query.getResultList();
     }
+   
+    public List<Ranking> listarTop() throws Exception {
+        return em.createNamedQuery("Ranking.top").setMaxResults(10).getResultList();
+    }
     
     public void alterar(Ranking obj) throws Exception {
        try {
@@ -53,7 +57,7 @@ public class RankingDAO {
             em.getTransaction().rollback();
             throw e;
        } finally {
-            em.close();
+          //  em.close();
        }
         
     }
@@ -74,7 +78,7 @@ public class RankingDAO {
             
         } finally {
             
-            em.close();
+        //    em.close();
             
         }
         

@@ -102,7 +102,7 @@ public class Jogador implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Jogador[ login=" + login + " ]";
+        return login ;
     }
     
 }

@@ -1,5 +1,7 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Jogador"%>
 <%@page import="dao.JogadorDAO"%>
+<%@page import="dao.RankingDAO" %>
 <%
   //Tentativa de Login
   String mensagem = "";
@@ -23,6 +25,10 @@
       }
       out.print(mensagem);
   }
+  
+  //Decimal para String
+  BigDecimal bd = new BigDecimal("320.02");
+
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

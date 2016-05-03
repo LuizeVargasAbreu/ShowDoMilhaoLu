@@ -19,7 +19,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "ranking")
 @NamedQueries({
-    @NamedQuery(name = "Ranking.findAll", query = "SELECT r FROM Ranking r")})
+    @NamedQuery(name = "Ranking.findAll", query = "SELECT r FROM Ranking r"),
+    @NamedQuery(name = "Ranking.top", query = "SELECT r FROM Ranking r order by r.pontos DESC")})
 public class Ranking implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
