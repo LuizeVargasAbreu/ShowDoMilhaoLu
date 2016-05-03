@@ -4,9 +4,31 @@
     Author     : marcelosiedler
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="modelo.Jogador"%>
+<%@page import="modelo.Jogo"%>
 <%@page import="modelo.Ranking"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.RankingDAO"%>
+<%
+    Jogo jogo = (Jogo) session.getAttribute("jogo");
+    
+    Ranking r = new Ranking();
+    Jogador jogador = (Jogador) session.getAttribute("jogador");
+    Date d = new Date();
+   
+    r.setPontos(jogo.getPontuacao());
+    r.setJogador(jogador);
+    r.setData(d);
+    
+    RankingDAO dao = new RankingDAO();
+    
+    dao.incluir(r);
+    List<Ranking> lista;
+    lista = dao.listar();
+    
+    dao.fechaEmf();
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,22 +45,15 @@
         <table>
 
             <%
-                RankingDAO dao = new RankingDAO();
-                List<Ranking> lista = dao.listarTop();
-                for (int i = 0; i < lista.size(); i++) {
+               for(Ranking item : lista) {
             %>
-            <tr>
-                <th><%=i + 1%></th>
-                <th><%=lista.get(i).getJogador()%></th>
-                <th><%=lista.get(i).getPontos()%></th>
-            </tr>
-
-            <%
-                } 
-                dao.fechaEmf();
-            %>
-        </table>
-        
+           
+        <ol>
+            <li><%=item.getPontos()%> - <%=item.getJogador()%><li> 
+        </ol>
+        <%
+            }
+        %>
         
     </body>
 </html>
