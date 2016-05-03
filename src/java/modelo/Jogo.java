@@ -53,6 +53,11 @@ public class Jogo {
     public Integer getErro()
     {
         Integer erro = 0;
+        if(pontuacao == 0 || pontuacao == 1000000){
+            return erro;
+        }
+        else if(pontuacao != 0){
+            erro = pontuacao / 2;
         return erro;
     }
     
@@ -75,10 +80,12 @@ public class Jogo {
             //Excluo a pergunta atual
             this.getPerguntas().remove(0);
             this.setPontuacao(this.getAcerto());
+            
             return true;
         }
         else
         {
+            this.setPontuacao(this.getErro());
             return false;
         }
     }
