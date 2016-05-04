@@ -25,7 +25,7 @@
     
     dao.incluir(r);
     List<Ranking> lista;
-    lista = dao.listar();
+    lista = dao.listarTop();
     
     dao.fechaEmf();
 %>
@@ -42,18 +42,23 @@
         <a href="jogo.jsp">Jogar novamente</a>
         <hr />
         <h4>TOP 10</h4>
-        <table>
+  
+          <table>
 
             <%
-               for(Ranking item : lista) {
+                for (int i = 0; i < lista.size(); i++) {
             %>
-           
-        <ol>
-            <li><%=item.getPontos()%> - <%=item.getJogador()%><li> 
-        </ol>
-        <%
-            }
-        %>
-        
+            <tr>
+                <th><%=i + 1%></th>
+                <th><%=lista.get(i).getJogador()%></th>
+                <th><%=lista.get(i).getPontos()%></th>
+            </tr>
+
+            <%
+
+                }
+
+            %>
+        </table>
     </body>
 </html>

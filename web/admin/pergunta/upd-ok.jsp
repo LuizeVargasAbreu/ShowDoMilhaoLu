@@ -21,28 +21,28 @@
     Integer id = Integer.parseInt(request.getParameter("selCategoria"));
 
     PerguntaDAO dao = new PerguntaDAO();
-    Pergunta pg = dao.buscarPorChavePrimaria(idzinho);
+    Pergunta pergunta = dao.buscarPorChavePrimaria(idzinho);
     
     Categoria cat = new Categoria ();
     cat.setId(id);
         
     
-    if (pg == null)
+    if (pergunta == null)
     {
         response.sendRedirect("list.jsp");
         return;
     }
-     pg.setId(idzinho);
-     pg.setA(a);
-     pg.setB(b);
-     pg.setC(c);
-     pg.setD(d);
-     pg.setNivel(nivel);
-     pg.setCerta(certa);
-     pg.setEnunciado(enunciado);
+     pergunta.setId(idzinho);
+     pergunta.setA(a);
+     pergunta.setB(b);
+     pergunta.setC(c);
+     pergunta.setD(d);
+     pergunta.setNivel(nivel);
+     pergunta.setCerta(certa);
+     pergunta.setEnunciado(enunciado);
    
 
-    dao.alterar(pg);
+    dao.alterar(pergunta);
 
 
 

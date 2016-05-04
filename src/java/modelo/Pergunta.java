@@ -143,7 +143,7 @@ public class Pergunta implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Pergunta[ id=" + id + " ]";
+        return enunciado;
     }
     
 }

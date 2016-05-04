@@ -51,7 +51,7 @@
                         <th>D</th> -->
                         <th>Nível</th>    
                         <th>Enunciado</th>   
-                        <th>Certa</th>
+                    <!--    <th>Certa</th>   -->
                         <th>Categoria</th>                        
                         
                         <th>Ações</th>
@@ -69,7 +69,7 @@
                         <td><//%=item.getD()%></td>     -->
                         <td><%=item.getNivel()%></td>
                         <td><%=item.getEnunciado()%></td>
-                        <td><%=item.getCerta()%></td>
+            <!--            <td><//%=item.getCerta()%></td>   -->
                         <td><%=item.getCategoria()%></td>
                         <td>
                             <!-- 

@@ -13,7 +13,7 @@
         if(request.getParameter("jogador") != null)
         {
             jogador = new Jogador();
-            jogador.setLogin("anonimo");
+            jogador.setLogin("Anônimo");
         }
     }
     else

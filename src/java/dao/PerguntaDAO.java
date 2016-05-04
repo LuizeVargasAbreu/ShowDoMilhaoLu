@@ -24,7 +24,7 @@ public class PerguntaDAO {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            em.close();
+          //  em.close();
             
         }
         
@@ -52,7 +52,7 @@ public class PerguntaDAO {
             em.getTransaction().rollback();
             throw e;
        } finally {
-            em.close();
+          //  em.close();
        }
         
     }
@@ -73,7 +73,7 @@ public class PerguntaDAO {
             
         } finally {
             
-            em.close();
+        //    em.close();
             
         }
         
@@ -85,7 +85,7 @@ public class PerguntaDAO {
     }
     
     public void fechaEmf() {
-        
+        em.close();
         Conexao.closeConexao();
         
     }

@@ -13,9 +13,9 @@
 
     Integer idzinho = Integer.parseInt(request.getParameter("idzinho"));
     PerguntaDAO dao = new PerguntaDAO();
-    Pergunta pg = dao.buscarPorChavePrimaria(idzinho);
+    Pergunta pergunta = dao.buscarPorChavePrimaria(idzinho);
 
-    if (pg == null)
+    if (pergunta == null)
     {
         response.sendRedirect("list.jsp");
         return;
@@ -39,68 +39,68 @@
                 -->
                <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtIdzinho" value="<%=pg.getId()%>" readonly="readonly" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtIdzinho" value="<%=pergunta.getId()%>" readonly="readonly" />
                         <label class="mdl-textfield__label" for="txtIdzinho">ID</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtA" value="<%=pg.getA()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtA" value="<%=pergunta.getA()%>" />
                         <label class="mdl-textfield__label" for="txtA">A</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtB" value="<%=pg.getB()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtB" value="<%=pergunta.getB()%>" />
                         <label class="mdl-textfield__label" for="txtB">B</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtC" value="<%=pg.getC()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtC" value="<%=pergunta.getC()%>" />
                         <label class="mdl-textfield__label" for="txtC">C</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtD" value="<%=pg.getD()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtD" value="<%=pergunta.getD()%>" />
                         <label class="mdl-textfield__label" for="txtD">D</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtNivel" value="<%=pg.getNivel()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtNivel" value="<%=pergunta.getNivel()%>" />
                         <label class="mdl-textfield__label" for="txtNivel">Nível</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtCerta" value="<%=pg.getCerta()%>"/>
+                        <input class="mdl-textfield__input" type="text" required  name="txtCerta" value="<%=pergunta.getCerta()%>"/>
                         <label class="mdl-textfield__label" for="txtCerta">Certa</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtEnunciado" value="<%=pg.getEnunciado()%>" />
+                        <input class="mdl-textfield__input" type="text" required  name="txtEnunciado" value="<%=pergunta.getEnunciado()%>" />
                         <label class="mdl-textfield__label" for="txtEnunciado">Enunciado</label>
                     </div>
                 </div>
                 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selCategoria" name="selCategoria" value="<%=pg.getCategoria()%>">
+                        <select class="mdl-select__input" id="selCategoria" name="selCategoria" value="<%=pergunta.getCategoria()%>">
                         <option value="">Selecione a resposta</option>
                             <%                         
                                String selected = "";    
                                for (Categoria item : lista) {
-                               if(item.getNome()== pg.getCategoria().getNome())
+                               if(item.getNome()== pergunta.getCategoria().getNome())
                                {
                                selected = "selected";
                                }

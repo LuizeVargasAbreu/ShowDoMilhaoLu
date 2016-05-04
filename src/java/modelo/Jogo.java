@@ -43,9 +43,16 @@ public class Jogo {
     public Integer getAcerto()
     {
         Integer acerto = 0;
-        if(this.pontuacao == 0)
+        if(this.pontuacao == 0){
+        acerto = 1000;
+        }
+        else if(this.pontuacao >= 1000)
         {
-            acerto = 1000;
+            acerto = pontuacao  + 1000;
+            if(this.pontuacao  >= 50000)
+            {
+              acerto = this.pontuacao * 2;          
+            }
         }
         return acerto;
     }

@@ -25,7 +25,7 @@ public class JogadorDAO {
             em.getTransaction().rollback();
             throw e;
         } finally {
-            em.close();
+         //   em.close();
             
         }
         
@@ -70,7 +70,7 @@ public class JogadorDAO {
             em.getTransaction().rollback();
             throw e;
        } finally {
-            em.close();
+          //  em.close();
        }
         
     }
@@ -91,7 +91,7 @@ public class JogadorDAO {
             
         } finally {
             
-            em.close();
+          //  em.close();
             
         }
         
@@ -103,7 +103,7 @@ public class JogadorDAO {
     }
     
     public void fechaEmf() {
-        
+        em.close();
         Conexao.closeConexao();
         
     }
