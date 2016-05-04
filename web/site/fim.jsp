@@ -46,7 +46,7 @@
           <table>
 
             <%
-                for (int i = 0; i < lista.size(); i++) {
+                  for (int i = 0; i < lista.size(); i++) {
             %>
             <tr>
                 <th><%=i + 1%></th>
